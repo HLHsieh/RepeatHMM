@@ -586,7 +586,11 @@ def getRepeatForGivenGene(commonOptions, specifiedOptions, moreOptions):
 
 
 def fixsize2(p2, ind):
-    if len(p2[ind]) > 1:
+    if p2==None or p2[ind]==None:
+       p2 = [0, [], []]
+       p2[ind].append(0)
+       p2[ind].append(0)
+    elif len(p2[ind]) > 1:
         pass
     elif len(p2[ind]) == 1:
         p2[ind].append(p2[ind][0])
@@ -596,12 +600,14 @@ def fixsize2(p2, ind):
 
 
 def addSumForAGene(p2, myret, myretdetail, mstr, ind=2):
+    print(('%10s' % mstr) + ' ' + str(p2))
     fixsize2(p2, ind)
     myretdetail[mstr] = (('%10s' % mstr) + ' ' + str(p2))
     # print mstr, p2
     #logging.info(mstr+' '+str(p2)+'\n')
     sys.stdout.flush()
-    myret[mstr] = p2[ind]
+    if not p2==None:
+       myret[mstr] = p2[ind]
 
 
 def getRepeatForKnownGene(commonOptions, specifiedOptions, moreOptions={}):
