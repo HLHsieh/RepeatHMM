@@ -363,7 +363,9 @@ def getRepeatForGivenGene(commonOptions, specifiedOptions, moreOptions):
         str(gene_start_end[0]) + '-' + str(gene_start_end[1]) + ' > ' + alignfile
     if 'thread' not in specifiedOptions:
         logging.info('Running ' + get_alg_cmd)
+    os.system("conda list"); print(get_alg_cmd); sys.stdout.flush()
     os.system(get_alg_cmd)
+    print(get_alg_cmd+"Done!"); sys.stdout.flush()
     if os.path.getsize(alignfile) == 0:
         if commonOptions['outlog'] <= myheader.M_WARNING:
             logging.info(get_alg_cmd + '\n')
@@ -374,7 +376,9 @@ def getRepeatForGivenGene(commonOptions, specifiedOptions, moreOptions):
             str(gene_start_end[1]) + ' > ' + alignfile
         if commonOptions['outlog'] <= myheader.M_INFO and ('thread' not in specifiedOptions):
             logging.info('Running ' + get_alg_cmd)
+        print(get_alg_cmd); sys.stdout.flush()
         os.system(get_alg_cmd)
+        print(get_alg_cmd+"Done!"); sys.stdout.flush()
     if commonOptions['outlog'] <= myheader.M_INFO:
         logging.info('Produced ' + alignfile + ' done!')
 
